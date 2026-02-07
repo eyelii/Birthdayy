@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>21 Clicks for Dr. Kalash Oberoi</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Comic Sans MS', cursive;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    text-align: center;
+    color: white;
+    overflow-x: hidden;
+}
+
+h1 {
+    margin-top: 30px;
+    font-size: 2.2em;
+}
+
+.click-box {
+    background: rgba(255,255,255,0.95);
+    color: #ff4d6d;
+    margin: 30px auto;
+    padding: 30px;
+    width: 85%;
+    border-radius: 25px;
+    font-size: 1.3em;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.click-box:active {
+    transform: scale(0.95);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Final reveal */
+.reveal {
+    background: white;
+    color: #333;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 25px;
+}
+
+/* Collage */
+.collage {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.collage img {
+    width: 100%;
+    border-radius: 18px;
+}
+
+/* Button */
+button {
+    background: #ff4d6d;
+    border: none;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 25px;
+    font-size: 1em;
+    cursor: pointer;
+    margin: 15px;
+}
+
+/* Confetti */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    top: -10px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎂 Click 21 Times 🎂</h1>
+<p>Because someone turned **21 today** 👀💖</p>
+
+<div class="click-box" onclick="handleClick()">
+    👉 Click Me 👈<br>
+    <span id="counter">0</span> / 21
+</div>
+
+<div id="message"></div>
+
+<div id="final" class="hidden reveal">
+    <h2>🎉 HAPPY 21st BIRTHDAY 🎉</h2>
+    <h3>✨ Dr. Kalash Oberoi ✨</h3>
+    <p>
+        From school benches to becoming a future doctor 🩺🌿<br>
+        You are strong, kind, and unstoppable 💖<br><br>
+        The world is lucky to have you —  
+        and I’m so proud to call you my friend 🥹
+    </p>
+
+    <button onclick="playMusic()">🎶 Play Birthday Song</button>
+
+    <div class="collage">
+        <img src="img1.jpg">
+        <img src="img2.jpg">
+        <img src="img3.jpg">
+        <img src="img4.jpg">
+    </div>
+
+    <p style="margin-top:15px;">
+        With endless love 💕<br>
+        — Jahnvi 🌸
+    </p>
+</div>
+
+<audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let clicks = 0;
+const messages = [
+ "🎈 Let’s gooo!",
+ "👀 Oho, someone’s curious",
+ "💖 Bestie energy",
+ "😂 Keep clicking",
+ "✨ Magic loading…",
+ "🩺 Doctor vibes",
+ "🌿 BAMS queen",
+ "🎊 Almost there",
+ "💉 Future healer",
+ "🥹 Proud moment",
+ "🔥 Main character",
+ "🎂 Birthday girl",
+ "💃 Slayyy",
+ "🎁 Surprise loading",
+ "😌 Trust the process",
+ "💗 One more step",
+ "🌸 Cute alert",
+ "🎉 Getting closer",
+ "👑 Queen stuff",
+ "🥳 READY?!"
+];
+
+function handleClick() {
+    if (clicks < 21) {
+        document.getElementById("counter").innerText = ++clicks;
+        document.getElementById("message").innerText =
+            messages[clicks - 1] || "✨";
+    }
+
+    if (clicks === 21) {
+        document.getElementById("final").classList.remove("hidden");
+        launchConfetti();
+    }
+}
+
+function playMusic() {
+    document.getElementById("music").play();
+}
+
+function launchConfetti() {
+    for (let i = 0; i < 120; i++) {
+        let c = document.createElement("div");
+        c.className = "confetti";
+        c.style.left = Math.random() * 100 + "vw";
+        c.style.backgroundColor =
+            ["#ff4d6d", "#ffd166", "#06d6a0", "#4d96ff"][Math.floor(Math.random()*4)];
+        c.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(c);
+    }
+}
+</script>
+
+</body>
+</html>
